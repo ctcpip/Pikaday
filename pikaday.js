@@ -1,7 +1,7 @@
 /*!
  * Pikaday
  *
- * Copyright © 2014 David Bushell | BSD & MIT license | https://github.com/dbushell/Pikaday
+ * Copyright © 2014 David Bushell | BSD & MIT license | https://github.com/ctcpip/Pikaday
  */
 
 (function (root, factory)
@@ -1152,7 +1152,7 @@
                 }
                 else{
                     this.el.style.position = 'static'; // reset
-                }                
+                }
                 this.el.style.left = 'auto';
                 this.el.style.top = 'auto';
                 addClass(this.el, 'is-hidden');
