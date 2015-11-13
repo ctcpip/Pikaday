@@ -207,3 +207,15 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 .pika-time {
     margin: 7px auto 7px;
 }
+
+.pika-button-container button {
+    margin: 0 8px 8px 8px;
+}
+
+.pika-button-now{
+    float:left;
+}
+
+.pika-button-done{
+    float:right;
+}
