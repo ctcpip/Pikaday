@@ -247,7 +247,7 @@
 
         // option to prevent calendar from auto-closing after date is selected
         autoClose: true,
-        
+
         // option to show a button panel, with one button to set the date to current date, and another button to hide the panel
         showButtonPanel: false,
 
@@ -268,6 +268,7 @@
             midnight      : 'Midnight',
             noon          : 'Noon',
             today         : 'Today',
+            now           : 'Now',
             done          : 'Done'
         },
 
@@ -1023,9 +1024,10 @@
                             opts)
                     + '</div>';
             }
-            
+
             if (opts.showButtonPanel){
-                html += '<div class="pika-button-container"><hr/><button type="button" class="pika-button-now">' + opts.i18n.today + '</button><button type="button" class="pika-button-done">' + opts.i18n.done + '</button></div>';
+                var labelToday = opts.showTime ? opts.i18n.now : opts.i18n.today;
+                html += '<div class="pika-button-container"><hr/><button type="button" class="pika-button-now">' + labelToday + '</button><button type="button" class="pika-button-done">' + opts.i18n.done + '</button></div>';
             }
 
             this.el.innerHTML = html;
