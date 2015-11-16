@@ -456,6 +456,66 @@
         return to_return + '</tr></tbody></table>';
     },
 
+    renderTimeSlider = function ($dl,_nc_this,sliderType,$tableTime,$ddTime){
+
+        var select, span, $select, $dt, $dd, selIndex, tblRange;
+
+        switch(sliderType){
+            case "hour":
+                select = "select.pika-select-hour";
+                span = "span.pika-time-span-hour";
+                $dt = jQuery("<dt>Hour</dt>");
+                tblRange = '<table width="105%" style="margin-left:-8px;"><tr><td>00</td><td>04</td><td>08</td><td>12</td><td>16</td><td>20</td></tr><table>';
+                break;
+            case "minute":
+                select = "select.pika-select-minute";
+                span = "span.pika-time-span-minute";
+                $dt = jQuery("<dt>Minute</dt>");
+                tblRange = '<table width="103%" style="margin-left:-8px;"><tr><td>00</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr><table>';
+                break;
+            case "second":
+                select = "select.pika-select-second";
+                span = "span.pika-time-span-second";
+                $dt = jQuery("<dt>Second</dt>");
+                tblRange = '<table width="103%" style="margin-left:-8px;"><tr><td>00</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr><table>';
+                break;
+        }
+
+        $select = jQuery(select,$tableTime);
+        $dd = jQuery("<dd>");
+        selIndex = $select[0].selectedIndex;
+
+        jQuery(span,$ddTime).text(selIndex < 10 ? "0" + selIndex.toString() : selIndex.toString());
+
+        jQuery("<div>").appendTo($dd).slider({
+            min: 0,
+            max: $select.children().length - 1,
+            range: "min",
+            value: selIndex,
+            slide: function(event, ui){
+
+                // setTime() expects strings
+
+                switch(sliderType){
+                    case "hour":
+                        _nc_this.setTime(ui.value.toString());
+                        break;
+                    case "minute":
+                        _nc_this.setTime(null, ui.value.toString());
+                        break;
+                    case "second":
+                        _nc_this.setTime(null, null, ui.value.toString());
+                        break;
+                }
+
+            }
+        });
+
+        $dd.append(tblRange);
+        $dl.append($dt).append($dd);
+
+    },
+
 
 
     /**
@@ -1035,6 +1095,27 @@
             }
 
             this.el.innerHTML = html;
+
+            // BEGIN Render jQuery UI Sliders
+
+            if (opts.showTime) {
+
+                var _nc_this = this;
+                var $divTimeContainer = jQuery("div.pika-time-container",_nc_this.el).css("padding", "0 10px 0 10px");
+                var $tableTime = jQuery("table.pika-time",$divTimeContainer);
+                var $dl = jQuery("<dl><dt>Time</dt></dl>");
+                var $ddTime = jQuery('<dd><span class="pika-time-span-hour"></span>:<span class="pika-time-span-minute"></span>:<span class="pika-time-span-second"></span></dd>');
+
+                $tableTime.hide();
+                $dl.append($ddTime).appendTo($divTimeContainer);
+
+                renderTimeSlider($dl,_nc_this,"hour",$tableTime,$ddTime,$divTimeContainer);
+                renderTimeSlider($dl,_nc_this,"minute",$tableTime,$ddTime,$divTimeContainer);
+                renderTimeSlider($dl,_nc_this,"second",$tableTime,$ddTime,$divTimeContainer);
+
+            }
+
+            // END Render jQuery UI Sliders
 
             if (opts.bound) {
                 if(opts.field.type !== 'hidden') {
