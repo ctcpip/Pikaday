@@ -465,19 +465,19 @@
                 select = "select.pika-select-hour";
                 span = "span.pika-time-span-hour";
                 $dt = jQuery("<dt>Hour</dt>");
-                tblRange = '<table width="105%" style="margin-left:-8px;"><tr><td>00</td><td>04</td><td>08</td><td>12</td><td>16</td><td>20</td></tr><table>';
+                tblRange = '<table width="105%" style="margin-left:-8px;"><tr><td>00</td><td>04</td><td>08</td><td>12</td><td>16</td><td>20</td></tr></table>';
                 break;
             case "minute":
                 select = "select.pika-select-minute";
                 span = "span.pika-time-span-minute";
                 $dt = jQuery("<dt>Minute</dt>");
-                tblRange = '<table width="103%" style="margin-left:-8px;"><tr><td>00</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr><table>';
+                tblRange = '<table width="103%" style="margin-left:-8px;"><tr><td>00</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr></table>';
                 break;
             case "second":
                 select = "select.pika-select-second";
                 span = "span.pika-time-span-second";
                 $dt = jQuery("<dt>Second</dt>");
-                tblRange = '<table width="103%" style="margin-left:-8px;"><tr><td>00</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr><table>';
+                tblRange = '<table width="103%" style="margin-left:-8px;"><tr><td>00</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr></table>';
                 break;
         }
 
