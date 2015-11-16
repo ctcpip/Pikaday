@@ -1,7 +1,7 @@
 /*!
  * Pikaday
  *
- * Copyright © 2014 David Bushell | BSD & MIT license | https://github.com/ctcpip/Pikaday
+ * Copyright © 2014 David Bushell | BSD & MIT license | https://github.com/ctcpip/Pikaday/tree/jquery_ui_time_sliders
  */
 
 (function (root, factory)
